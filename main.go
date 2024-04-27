@@ -102,16 +102,25 @@ func decoding(summary, dist string) error {
 	return nil
 }
 
+// StartTask （encoding / decoding）
+var StartTask = "encoding"
+
+// 使用 Google 翻译 https://translate.google.com/
 func main() {
-	// 使用 Google 翻译 https://translate.google.com/
-	dist := "E:\\katydist-jp-bak-xiugai\\dist"
-	summary := "E:\\katydist-jp-bak-xiugai\\summary"
-	//if err := encoding(dist, summary); err != nil {
-	//	log.Fatal(err)
-	//	return
-	//}
-	if err := decoding(summary, dist); err != nil {
-		log.Fatal(err)
-		return
+	dist := "E:\\content\\dist"
+	summary := "E:\\content\\summary"
+	switch StartTask {
+	case "encoding":
+		if err := encoding(dist, summary); err != nil {
+			log.Fatal(err)
+			return
+		}
+		break
+	case "decoding":
+		if err := decoding(summary, dist); err != nil {
+			log.Fatal(err)
+			return
+		}
+		break
 	}
 }
